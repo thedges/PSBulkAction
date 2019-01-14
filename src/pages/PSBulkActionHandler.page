@@ -1,0 +1,57 @@
+<apex:page showheader="false" sidebar="false" standardStylesheets="false">
+    <apex:includeLightning />
+    <body style="background-image: url('/_slds/images/themes/lightning_blue/lightning_blue_background.png'); background-repeat:no-repeat; background-color: #b1c4de;">
+    <div id="app" />
+
+    <script>
+    ///////////////////////////
+    // EDIT THESE PARAMETERS //
+    ///////////////////////////
+
+    // the field in the SAQL that is the Id value for the sobjects
+    const idField = 'Contact.Id';                 
+    // comma seperated list of API field names to allow editing
+    const editFields = 'Certification_Level__c,CleanStatus,FinServ__MarketingOptOut__c,FinServ__Affiliations__c,DoNotCall,CanAllowPortalSelfReg';    
+     // show option to create tasks for items in list
+    const showTasks = true;                      
+    // show option to create chatter post for items in list
+    const showChatter = true;                    
+    // show the SAQL data in table format 
+    const showData = true;  
+    // show the SAQL query statement                      
+    const showSAQL = true;    
+
+    ///////////////////////////
+    // STOP EDITING          //
+    ///////////////////////////
+
+    /////////////////////////////////
+    // DO NOT EDIT BELOW THIS LINE //
+    /////////////////////////////////
+    var params = {};
+    '{!$CurrentPage.URL}'.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        params[key] = value;
+    });
+
+    $Lightning.use("c:PSBulkActionApp",
+                   function(){
+                       $Lightning.createComponent(
+                           "c:PSBulkAction",
+                           {"idField":idField,
+                           "query": params['query'],
+                           "editFields": editFields,
+                           "showTasks":showTasks,
+                           "showChatter":showChatter,
+                           "showData":showData,
+                           "showSAQL":showSAQL},
+                           "app",
+                           function(cmp){
+                               console.log('done');
+                           }
+                       );
+                   }
+                  )
+
+    </script>
+    </body>
+</apex:page>
