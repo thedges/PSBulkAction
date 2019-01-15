@@ -10,16 +10,16 @@ A component providing a declarative "bulk action" editor for Einstein Analytics.
 
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-BulkEdit.png "Bulk Edit")
 
-![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Chatter.gif "Chatter")
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Chatter.png "Chatter")
 
-![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Tasks.gif "Tasks")
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Tasks.png "Tasks")
 
-![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Data.gif "Data")
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Data.png "Data")
 
-![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.gif "SAQL")
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
 
 <b>Follow the following steps to use this component:</b>
-1. Install the component via the link below. 
+1. Install the component via the deploy button below. Make sure to install any pre-reqs. 
 2. Assign the 'PSBulkActionEditor' permission set to any users using this component.
 3. Go to the 'PSBulkActionConfig' tab and create a configuration record for your specific configuration. Below is sample screen and field definitions: ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Record.png "Record")
 
