@@ -29,7 +29,7 @@ Bulk editor screen that will apply all settings to every record returned by the 
 
 <b>Tasks Tab</b><br/>
 
-    Editor screen to create tasks for every record returned by the SAQL query. You have the following options:
+   Editor screen to create tasks for every record returned by the SAQL query. You have the following options:
 
    - <b>Subject</b> - the subject for the task
    - <b>Description</b> - the description for the task
