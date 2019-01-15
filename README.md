@@ -8,13 +8,22 @@ A component providing a declarative "bulk action" editor for Einstein Analytics.
 
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction.gif "Demo Image")
 
+Here is a walk through of each tab in the component.
+
+<b>Bulk Edit Tab</b>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-BulkEdit.png "Bulk Edit")
 
+<b>Chatter Tab</b>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Chatter.png "Chatter")
 
+<b>Tasks Tab</b>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Tasks.png "Tasks")
 
+<b>Data Tab</b>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Data.png "Data")
+
+<b>SAQL Tab</b>
+Read-only view of the SAQL query sent from the Einstein Analytics dashboard
 
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
 
