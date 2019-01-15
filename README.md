@@ -10,19 +10,23 @@ A component providing a declarative "bulk action" editor for Einstein Analytics.
 
 Here is a walk through of each tab in the component.
 
-<b>Bulk Edit Tab</b>
+<b>Bulk Edit Tab</b><br/>
+
+Bulk editor screen that will apply all settings to every record in the SAQL query. The edit fields shown are driven by the 'PSBulkActionConfig' record configuration as defined in step #3 below.
+
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-BulkEdit.png "Bulk Edit")
 
-<b>Chatter Tab</b>
+<b>Chatter Tab</b><br/>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Chatter.png "Chatter")
 
-<b>Tasks Tab</b>
+<b>Tasks Tab</b><br/>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Tasks.png "Tasks")
 
-<b>Data Tab</b>
+<b>Data Tab</b><br/>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Data.png "Data")
 
-<b>SAQL Tab</b><br/>
+<b>SAQL Query Tab</b><br/>
+
 Read-only view of the SAQL query sent from the Einstein Analytics dashboard
 
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
