@@ -15,7 +15,7 @@ Here is a walk through of each tab in the component.
 
 <b>Bulk Edit Tab</b><br/>
 
-Bulk editor screen that will apply all settings to every record returned by the SAQL query. The edit fields shown are driven by the 'PSBulkActionConfig' record configuration as defined in step #3 below.
+Bulk editor screen that will apply all settings to every record returned by the SAQL query. The edit fields shown on the page are dynamic and are driven by the 'PSBulkActionConfig' record configuration as defined in step #3 below.
 
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-BulkEdit.png "Bulk Edit")
 
