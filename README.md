@@ -22,7 +22,7 @@ Here is a walk through of each tab in the component.
 <b>Data Tab</b>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Data.png "Data")
 
-<b>SAQL Tab</b>
+<b>SAQL Tab</b><br/>
 Read-only view of the SAQL query sent from the Einstein Analytics dashboard
 
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
