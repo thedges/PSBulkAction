@@ -14,5 +14,17 @@
         <members>PSBulkActionField</members>
         <name>AuraDefinitionBundle</name>
     </types>
+    <types>
+        <members>PSBulkActionConfig__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>PSBulkActionConfig__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>PSBulkActionEditor</members>
+        <name>PermissionSet</name>
+    </types>
     <version>42.0</version>
 </Package>

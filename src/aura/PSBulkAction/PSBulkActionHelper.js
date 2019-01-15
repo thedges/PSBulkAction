@@ -1,4 +1,65 @@
 ({
+    loadConfig: function (component) {
+        var self = this;
+
+        try
+        {
+            var queryStr = component.get('v.query');
+            var configName = null;
+            var lineList = queryStr.split(/\n/);
+
+            for (var i = 0; i<lineList.length; i++)
+            {
+                console.log('line=' + lineList[i]);
+               if (lineList[i].includes('--bulkconfig='))
+               {
+                   configName = lineList[i].substring(lineList[i].indexOf('--bulkconfig=') + 13).trim();
+                   break;
+               }
+            }
+
+            console.log('configName=' + configName);
+
+            self.getBulkEditConfig(component, configName);
+        }
+        catch (err)
+        {
+            console.log(err.message);
+            self.handleErrors(component, err.message);
+        }
+    },
+    getBulkEditConfig: function (component, configName) {
+        var self = this;
+        try
+        {
+            var action = component.get("c.getBulkEditConfig");
+            action.setParams({
+                "configName": configName
+            });
+
+            action.setCallback(this, function (a) {
+                var state = a.getState();
+                if (state === "SUCCESS") {
+                    var config = a.getReturnValue();
+                    component.set('v.idField', config.SAQL_ID_Field__c);
+                    component.set('v.editFields', config.Bulk_Edit_Fields__c);
+                    component.set('v.showBulkEdit', config.Show_Bulk_Edit__c);
+                    component.set('v.showTasks', config.Show_Task__c);
+                    component.set('v.showChatter', config.Show_Chatter__c);
+                    component.set('v.showData', config.Show_Data__c);
+                    component.set('v.showSAQL', config.Show_SAQL__c);
+
+                    self.executeSAQLQuery(component);
+                } else {
+                    self.handleErrors(component, a.getError());
+                }
+
+            });
+            $A.enqueueAction(action);
+        } catch (err) {
+            self.handleErrors(component, err.message);
+        }
+    },
     executeSAQLQuery: function (component) {
         var self = this;
 
@@ -106,6 +167,7 @@
             action.setCallback(this, function (a) {
                 var state = a.getState();
                 if (state === "SUCCESS") {
+                    console.log('sobjectDef=' + a.getReturnValue());
                     component.set('v.sobjectDef', JSON.parse(a.getReturnValue()));
                 } else {
                     self.handleErrors(component, a.getError());
@@ -131,10 +193,14 @@
 
             action.setCallback(this, function (a) {
                 var state = a.getState();
-                if (state === "SUCCESS") {} else {
+                if (state === "SUCCESS") {
+                    var ids = component.get('v.ids');
+                    self.hideSpinner(component);
+                    alert(ids.length + ' records have been updated!');
+                } else {
+                    self.hideSpinner(component);
                     self.handleErrors(component, a.getError());
                 }
-                self.hideSpinner(component);
 
             });
             $A.enqueueAction(action);
@@ -158,6 +224,8 @@
                 "dueDate": component.get('v.taskDueDate'),
                 "status": component.get('v.taskStatus'),
                 "priority": component.get('v.taskPriority'),
+                "sobjectName": component.get('v.sobjectDef').objectName,
+                "recordOwner": component.get('v.taskRecordOwner'),
                 "ids": component.get('v.ids')
             });
 
@@ -165,10 +233,14 @@
 
             action.setCallback(this, function (a) {
                 var state = a.getState();
-                if (state === "SUCCESS") {} else {
+                if (state === "SUCCESS") {
+                    var ids = component.get('v.ids');
+                    self.hideSpinner(component);
+                    alert(ids.length + ' tasks have been created!');
+                } else {
+                    self.hideSpinner(component);
                     self.handleErrors(component, a.getError());
                 }
-                self.hideSpinner(component);
 
             });
             $A.enqueueAction(action);
@@ -176,6 +248,38 @@
             self.handleErrors(component, err.message);
         }
 
+    },
+    postChatter: function (component) {
+        var self = this;
+        try {
+            self.showSpinner(component);
+
+            var action = component.get("c.postChatter");
+            action.setParams({
+                "sobjectName": component.get('v.sobjectDef').objectName,
+                "users": component.get('v.chatterUsers'),
+                "mentionOwners": component.get('v.chatterMentionOwner'),
+                "groups": component.get('v.chatterGroups'),
+                "post": component.get('v.chatterText'),
+                "ids": component.get('v.ids')
+            });
+
+            action.setCallback(this, function (a) {
+                var state = a.getState();
+                if (state === "SUCCESS") {
+                    self.hideSpinner(component);
+                    var ids = component.get('v.ids');
+                    alert(ids.length + ' chatter posts have been created!');
+                } else {
+                    self.hideSpinner(component);
+                    self.handleErrors(component, a.getError());
+                }
+
+            });
+            $A.enqueueAction(action);
+        } catch (err) {
+            self.handleErrors(component, err.message);
+        }
     },
     showSpinner: function (component) {
         component.set("v.IsSpinner", true);
@@ -194,5 +298,50 @@
         }
         component.set("v.errorMsg", errorMsg);
 
+    },
+    clearBulkEdit: function (component) {
+        this.showSpinner(component);
+
+		var sobjectDef = component.get('v.sobjectDef');
+		if (sobjectDef)
+		{
+			for (var i=0; i<sobjectDef.fields.length; i++)
+			{
+                if (sobjectDef.fields[i].ftype == 'reference')
+                {
+                  sobjectDef.fields[i].value = '';
+                }
+                else
+                {
+                  sobjectDef.fields[i].value = null;
+                }
+			}
+		}
+		component.set('v.sobjectDef', sobjectDef);
+		this.hideSpinner(component);
+    },
+    clearTasksEdit: function (component) {
+        this.showSpinner(component);
+
+        component.set('v.taskSubject', null);
+        component.set('v.taskDescription', null);
+        component.set('v.taskType', null);
+        component.set('v.taskOwnerId', null);
+        component.set('v.taskDueDate', null);
+        component.set('v.taskStatus', null);
+        component.set('v.taskPriority', null);
+        component.set('v.taskRecordOwner', null);
+
+        this.hideSpinner(component);
+    },
+    clearChatterEdit: function (component) {
+        this.showSpinner(component);
+
+        component.set('v.chatterUsers', null);
+        component.set('v.chatterGroups', null);
+        component.set('v.chatterText', null);
+        component.set('v.chatterMentionOwner', null);
+
+        this.hideSpinner(component);
     }
 })
