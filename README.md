@@ -54,7 +54,7 @@ Bulk editor screen that will apply all settings to every record returned by the 
 
    ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
 
-<b>Follow the following steps to use this component:</b>
+<b>Follow these steps to install and configure this component:</b>
 1. Install the component via the deploy button below. Make sure to install any pre-reqs. 
 2. Assign the 'PSBulkActionEditor' permission set to any users using this component.
 3. Go to the 'PSBulkActionConfig' tab and create a configuration record for your specific configuration. Below is sample screen and field definitions: ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Record.png "Record")
