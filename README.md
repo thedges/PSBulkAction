@@ -15,14 +15,14 @@ A component providing a declarative "bulk action" editor for Einstein Analytics.
 
   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Record.png "Record")
 
-   * <b>Config Name</b> - provide a logical name for the configuration; this is the value to be used in step XX
-   * <b>SAQL ID Field</b> - the field in the SAQL query that identifies the sobject IDs to for the sobject to bulk edit
-   * <b>Bulk Edit Fields</b> - a comma-separated list of sobject field API names to allow editing for
-   * <b>Show Bulk Edit</b> - show the Bulk Edit tab
-   * <b>Show Chatter</b> - show the Chatter tab
-   * <b>Show Task</b> - show the Task tab
-   * <b>Show Data</b> - show the Data tab
-   * <b>Show SAQL</b> - show the SAQL tab
+   - <b>Config Name</b> - provide a logical name for the configuration; this is the value to be used in step XX
+   - <b>SAQL ID Field</b> - the field in the SAQL query that identifies the sobject IDs to for the sobject to bulk edit
+   - <b>Bulk Edit Fields</b> - a comma-separated list of sobject field API names to allow editing for
+   - <b>Show Bulk Edit</b> - show the Bulk Edit tab
+   - <b>Show Chatter</b> - show the Chatter tab
+   - <b>Show Task</b> - show the Task tab
+   - <b>Show Data</b> - show the Data tab
+   - <b>Show SAQL</b> - show the SAQL tab
    
 3. For the Einstein Analytics dashboard table component that you want to add 'bulk edit' capability to, perform the following:
    - Open your dashboard in Analytics Studio
