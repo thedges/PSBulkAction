@@ -18,7 +18,7 @@ Bulk editor screen that will apply all settings to every record returned by the 
 
 <b>Chatter Tab</b><br/>
 
-Editor screen to create chatter posts for every record returned by  the SAQL query. You have the following options:
+   Editor screen to create chatter posts for every record returned by  the SAQL query. You have the following options:
 
    - <b>Users</b> - select users to @mention
    - <b>Groups</b> - select chatter groups to @mention
@@ -28,16 +28,31 @@ Editor screen to create chatter posts for every record returned by  the SAQL que
    ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Chatter.png "Chatter")
 
 <b>Tasks Tab</b><br/>
-![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Tasks.png "Tasks")
+
+    Editor screen to create tasks for every record returned by the SAQL query. You have the following options:
+
+   - <b>Subject</b> - the subject for the task
+   - <b>Description</b> - the description for the task
+   - <b>Due Date</b> - the date that every task is due by
+   - <b>Owner</b> - select one specific user to be the owner of all created tasks...or
+   - <b>Assign record owner</b> - assign the owner of each task to the owner of the current records
+   - <b>Type</b> - the task type
+   - <b>Status</b> - the task status
+   - <b>Priority</b> - the task priority
+   
+   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Tasks.png "Tasks")
 
 <b>Data Tab</b><br/>
-![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Data.png "Data")
+
+   Simple read-only table view of data returned by the SAQL query sent from the Einstein Analytics dashboard
+   
+   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Data.png "Data")
 
 <b>SAQL Query Tab</b><br/>
 
-Read-only view of the SAQL query sent from the Einstein Analytics dashboard
+   Read-only view of the SAQL query sent from the Einstein Analytics dashboard
 
-![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
+   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
 
 <b>Follow the following steps to use this component:</b>
 1. Install the component via the deploy button below. Make sure to install any pre-reqs. 
