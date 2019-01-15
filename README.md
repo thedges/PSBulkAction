@@ -1,5 +1,5 @@
 # PSBulkAction
-A component providing a declarative "bulk action" editor for Einstein Analytics. The component retrieves the SAQL query from the Einstein Analytics dashboard component and provides the following:
+A component providing a declarative "bulk action" editor for Einstein Analytics dashboard table components. The component retrieves the SAQL query from the Einstein Analytics dashboard component and provides the following:
 - Configurable list of fields to show for editing in bulk mode for all records returned by the SAQL
 - Create chatter posts for all records returned by the SAQL
 - Create tasks for all records returned by the SAQL
