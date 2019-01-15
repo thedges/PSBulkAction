@@ -23,6 +23,22 @@ A component providing a declarative "bulk action" editor for Einstein Analytics.
    * <b>Show Task</b> - show the Task tab
    * <b>Show Data</b> - show the Data tab
    * <b>Show SAQL</b> - show the SAQL tab
+   
+3. For the Einstein Analytics dashboard table component that you want to add 'bulk edit' capability to:
+   - Open your dashboard in Analytics Studio
+   - Switch to edit mode on your dashboard
+   - Select the table component in your dashboard
+   - In configuration window on right side of screen, set following values:
+     <b>Custom Action Label</b> - the string value to show as menu option; example: 'Bulk Edit'
+     <b>Visualforce Page Name</b> - set to 'PSBulkActionHandler'
+   - Next we need to modify the actual table component SAQL. Select the table component and click pencil icon that pops up below it.
+   - In top-right of next screen, select the SAQL edito option.
+   - Lastly, we need to edit the SAQL code to include a comment line that will tell the bulk editor component which configuration setting (created in step #3) to use.  Edit the table component SAQL to create a comment line as the first row. The comment line should be in the form 
+   '--bulkconfig=<configuration_name>'. An example is below,
+   
+   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
+   
+     
 
 <b>Dependency:</b> Install the [LightningStrike.io](https://github.com/thedges/Lightning-Strike) package first.
 
