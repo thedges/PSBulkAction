@@ -83,7 +83,7 @@ Bulk editor screen that will apply all settings to every record returned by the 
    - Lastly, edit the SAQL code to include a comment line that will tell the bulk editor component which configuration setting (created in step #3) to use.  Edit the table component SAQL to create a comment line as the first row. The comment line should be in the form 
    '--bulkconfig=<configuration_name>'. An example is below,
    
-   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQLEdit.png "SAQL")
+   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQLEdit2.png "SAQL")
    
 That's it! You should now be able to perform bulk editing on your table component and perform custom field edits, chatter posts and task creations.
 
