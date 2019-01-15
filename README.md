@@ -12,12 +12,20 @@ Here is a walk through of each tab in the component.
 
 <b>Bulk Edit Tab</b><br/>
 
-Bulk editor screen that will apply all settings to every record in the SAQL query. The edit fields shown are driven by the 'PSBulkActionConfig' record configuration as defined in step #3 below.
+Bulk editor screen that will apply all settings to every record returned by the SAQL query. The edit fields shown are driven by the 'PSBulkActionConfig' record configuration as defined in step #3 below.
 
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-BulkEdit.png "Bulk Edit")
 
 <b>Chatter Tab</b><br/>
-![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Chatter.png "Chatter")
+
+Editor screen to create chatter posts for every record returned by  the SAQL query. You have the following options:
+
+   - <b>Users</b> - select users to @mention
+   - <b>Groups</b> - select chatter groups to @mention
+   - <b>@mention record owner</b> - for every record, @mention the record owner
+   - <b>Chatter Message</b> - the text message to send as main body of the chatter post
+   
+   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Chatter.png "Chatter")
 
 <b>Tasks Tab</b><br/>
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Tasks.png "Tasks")
@@ -36,7 +44,7 @@ Read-only view of the SAQL query sent from the Einstein Analytics dashboard
 2. Assign the 'PSBulkActionEditor' permission set to any users using this component.
 3. Go to the 'PSBulkActionConfig' tab and create a configuration record for your specific configuration. Below is sample screen and field definitions: ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Record.png "Record")
 
-   - <b>Config Name</b> - provide a logical name for the configuration; this is the value to be used in step XX
+   - <b>Config Name</b> - provide a logical name for the configuration; this is the value to be used in step 4
    - <b>SAQL ID Field</b> - the field in the SAQL query that identifies the sobject IDs to for the sobject to bulk edit
    - <b>Bulk Edit Fields</b> - a comma-separated list of sobject field API names to allow editing for
    - <b>Show Bulk Edit</b> - show the Bulk Edit tab
