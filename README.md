@@ -29,8 +29,8 @@ A component providing a declarative "bulk action" editor for Einstein Analytics.
    - Switch to edit mode for your dashboard
    - Select the table component in your dashboard
    - In configuration window on right side of screen, set following config properties:
-     <b>Custom Action Label</b> - a string value to show as menu option for your table; example: 'Bulk Edit'
-     <b>Visualforce Page Name</b> - set exactly to 'PSBulkActionHandler'
+     - <b>Custom Action Label</b> - a string value to show as menu option for your table; example: 'Bulk Edit'
+     - <b>Visualforce Page Name</b> - set exactly to 'PSBulkActionHandler'
    - Next we need to modify the actual table component SAQL. Select the table component and click the pencil icon that pops up below it.
    - In top-right of next screen, select the SAQL edit option/button.
    - Lastly, we need to edit the SAQL code to include a comment line that will tell the bulk editor component which configuration setting (created in step #3) to use.  Edit the table component SAQL to create a comment line as the first row. The comment line should be in the form 
