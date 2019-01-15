@@ -8,6 +8,16 @@ A component providing a declarative "bulk action" editor for Einstein Analytics.
 
 ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction.gif "Demo Image")
 
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-BulkEdit.png "Bulk Edit")
+
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Chatter.gif "Chatter")
+
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Tasks.gif "Tasks")
+
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Data.gif "Data")
+
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.gif "SAQL")
+
 <b>Follow the following steps to use this component:</b>
 1. Install the component via the link below. 
 2. Assign the 'PSBulkActionEditor' permission set to any users using this component.
@@ -31,12 +41,12 @@ A component providing a declarative "bulk action" editor for Einstein Analytics.
      - <b>Visualforce Page Name</b> - set exactly to 'PSBulkActionHandler'
    - Next we need to modify the actual table component SAQL. Select the table component and click the pencil icon that pops up below it.
    - In top-right of next screen, select the SAQL edit option/button.
-   - Lastly, we need to edit the SAQL code to include a comment line that will tell the bulk editor component which configuration setting (created in step #3) to use.  Edit the table component SAQL to create a comment line as the first row. The comment line should be in the form 
+   - Lastly, edit the SAQL code to include a comment line that will tell the bulk editor component which configuration setting (created in step #3) to use.  Edit the table component SAQL to create a comment line as the first row. The comment line should be in the form 
    '--bulkconfig=<configuration_name>'. An example is below,
    
    ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQL.png "SAQL")
    
-     
+That's it! You should now be able to perform bulk editing on your table component and perform custom field edits, chatter posts and task creations.
 
 <b>Dependency:</b> Install the [LightningStrike.io](https://github.com/thedges/Lightning-Strike) package first.
 
