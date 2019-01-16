@@ -50,10 +50,6 @@
         <enabled>true</enabled>
     </pageAccesses>
     <tabSettings>
-        <tab>PSBulkAction</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
         <tab>PSBulkActionConfig__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
