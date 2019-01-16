@@ -26,5 +26,9 @@
         <members>PSBulkActionEditor</members>
         <name>PermissionSet</name>
     </types>
+    <types>
+        <members>siiimple_toast</members>
+        <name>StaticResource</name>
+    </types>
     <version>42.0</version>
 </Package>

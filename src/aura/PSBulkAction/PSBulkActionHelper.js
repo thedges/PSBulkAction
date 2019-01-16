@@ -8,22 +8,23 @@
             var configName = null;
             var lineList = queryStr.split(/\n/);
 
-            for (var i = 0; i<lineList.length; i++)
-            {
+            for (var i = 0; i < lineList.length; i++) {
                 console.log('line=' + lineList[i]);
-               if (lineList[i].includes('--bulkconfig='))
-               {
-                   configName = lineList[i].substring(lineList[i].indexOf('--bulkconfig=') + 13).trim();
-                   break;
-               }
+                if (lineList[i].includes('--bulkconfig=')) {
+                    configName = lineList[i].substring(lineList[i].indexOf('--bulkconfig=') + 13).trim();
+                    break;
+                }
             }
 
             console.log('configName=' + configName);
-
+            if (configName == null || configName.length == 0)
+            {
+                throw new Error('No configuration name was provided for the \'--bulkconfig=\' comment in the SAQL code.');
+            }
+            
+            component.set('v.configName', configName);
             self.getBulkEditConfig(component, configName);
-        }
-        catch (err)
-        {
+        } catch (err) {
             console.log(err.message);
             self.handleErrors(component, err.message);
         }
@@ -33,9 +34,7 @@
         try
         {
             var action = component.get("c.getBulkEditConfig");
-            action.setParams({
-                "configName": configName
-            });
+            action.setParams({"configName": configName});
 
             action.setCallback(this, function (a) {
                 var state = a.getState();
@@ -160,6 +159,7 @@
         {
             var action = component.get("c.getFieldDefs");
             action.setParams({
+                "configName": component.get('v.configName'),
                 "sobjectPrefix": component.get('v.sobjectPrefix'),
                 "fields": component.get('v.editFields')
             });
@@ -185,6 +185,8 @@
         try {
             self.showSpinner(component);
 
+            component.set('v.errorMsg', null);
+
             var action = component.get("c.updateRecords");
             action.setParams({
                 "sobjectDef": JSON.stringify(component.get('v.sobjectDef')),
@@ -196,9 +198,9 @@
                 if (state === "SUCCESS") {
                     var ids = component.get('v.ids');
                     self.hideSpinner(component);
-                    alert(ids.length + ' records have been updated!');
+                    siiimpleToast.success(ids.length + ' records have been updated!');
+                    //alert(ids.length + ' records have been updated!');
                 } else {
-                    self.hideSpinner(component);
                     self.handleErrors(component, a.getError());
                 }
 
@@ -214,6 +216,8 @@
         try {
             self.showSpinner(component);
 
+            component.set('v.errorMsg', null);
+
             var action = component.get("c.createTasks");
 
             action.setParams({
@@ -224,7 +228,9 @@
                 "dueDate": component.get('v.taskDueDate'),
                 "status": component.get('v.taskStatus'),
                 "priority": component.get('v.taskPriority'),
-                "sobjectName": component.get('v.sobjectDef').objectName,
+                "sobjectName": component
+                    .get('v.sobjectDef')
+                    .objectName,
                 "recordOwner": component.get('v.taskRecordOwner'),
                 "ids": component.get('v.ids')
             });
@@ -236,9 +242,8 @@
                 if (state === "SUCCESS") {
                     var ids = component.get('v.ids');
                     self.hideSpinner(component);
-                    alert(ids.length + ' tasks have been created!');
+                    siiimpleToast.success(ids.length + ' tasks have been created!');
                 } else {
-                    self.hideSpinner(component);
                     self.handleErrors(component, a.getError());
                 }
 
@@ -254,9 +259,13 @@
         try {
             self.showSpinner(component);
 
+            component.set('v.errorMsg', null);
+
             var action = component.get("c.postChatter");
             action.setParams({
-                "sobjectName": component.get('v.sobjectDef').objectName,
+                "sobjectName": component
+                    .get('v.sobjectDef')
+                    .objectName,
                 "users": component.get('v.chatterUsers'),
                 "mentionOwners": component.get('v.chatterMentionOwner'),
                 "groups": component.get('v.chatterGroups'),
@@ -269,7 +278,7 @@
                 if (state === "SUCCESS") {
                     self.hideSpinner(component);
                     var ids = component.get('v.ids');
-                    alert(ids.length + ' chatter posts have been created!');
+                    siiimpleToast.success(ids.length + ' chatter posts have been created!');
                 } else {
                     self.hideSpinner(component);
                     self.handleErrors(component, a.getError());
@@ -289,7 +298,9 @@
     },
     handleErrors: function (component, errors) {
         var errorMsg;
+        this.hideSpinner(component);
 
+        console.log('errors=' + JSON.stringify(errors));
         // Pass the error message if any
         if (errors && Array.isArray(errors) && errors.length > 0) {
             errorMsg = errors[0].message;
@@ -302,27 +313,26 @@
     clearBulkEdit: function (component) {
         this.showSpinner(component);
 
-		var sobjectDef = component.get('v.sobjectDef');
-		if (sobjectDef)
-		{
-			for (var i=0; i<sobjectDef.fields.length; i++)
-			{
-                if (sobjectDef.fields[i].ftype == 'reference')
-                {
-                  sobjectDef.fields[i].value = '';
+        var sobjectDef = component.get('v.sobjectDef');
+        if (sobjectDef) {
+            for (var i = 0; i < sobjectDef.fields.length; i++) {
+                if (sobjectDef.fields[i].ftype == 'reference') {
+                    sobjectDef.fields[i].value = '';
+                } else {
+                    sobjectDef.fields[i].value = null;
                 }
-                else
-                {
-                  sobjectDef.fields[i].value = null;
-                }
-			}
-		}
-		component.set('v.sobjectDef', sobjectDef);
-		this.hideSpinner(component);
+            }
+        }
+        component.set('v.sobjectDef', sobjectDef);
+
+        component.set('v.errorMsg', null);
+
+        this.hideSpinner(component);
     },
     clearTasksEdit: function (component) {
         this.showSpinner(component);
 
+        component.set('v.errorMsg', null);
         component.set('v.taskSubject', null);
         component.set('v.taskDescription', null);
         component.set('v.taskType', null);
@@ -337,6 +347,7 @@
     clearChatterEdit: function (component) {
         this.showSpinner(component);
 
+        component.set('v.errorMsg', null);
         component.set('v.chatterUsers', null);
         component.set('v.chatterGroups', null);
         component.set('v.chatterText', null);
