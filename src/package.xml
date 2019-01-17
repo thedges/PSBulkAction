@@ -24,6 +24,10 @@
         <name>CustomTab</name>
     </types>
     <types>
+        <members>PSBulkActionConfig__c-PSBulkActionConfig Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
         <members>PSBulkActionEditor</members>
         <name>PermissionSet</name>
     </types>
