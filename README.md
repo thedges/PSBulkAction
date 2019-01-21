@@ -96,7 +96,7 @@ Bulk editor screen that will apply all settings to every record returned by the 
      2) the auto-genereated record name of the PSBulkActionConfig record (ex: 00013)
      3) the custom name of PSBulkActionConfig record as defined in the "Config Name" field (ex: Auto Customer Rank Churn)
    
-   An example is below,
+   An example is below which uses the PSBulkActionConfig record configuration name,
    
    ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQLEdit2.png "SAQL")
    
