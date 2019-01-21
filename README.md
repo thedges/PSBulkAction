@@ -60,7 +60,8 @@ Bulk editor screen that will apply all settings to every record returned by the 
 <b>Follow these steps to install and configure this component:</b>
 1. Install the component via the deploy button below. Make sure to install any pre-reqs. 
 2. Assign the 'PSBulkActionEditor' permission set to any users using this component.
-3. Go to the 'PSBulkActionConfig' tab and create a configuration record for your specific configuration. Below is sample screen and field definitions: ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Record.png "Record")
+3. Go to the 'PSBulkActionConfig' tab and create a configuration record for your specific configuration. Below is sample screen and field definitions: 
+![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Record2.png "Record")
 
    - <b>Config Name</b> - provide a logical name for the configuration; this is the value to be used in step 4
    - <b>SAQL ID Field</b> - the field in the SAQL query that identifies the sobject IDs to for the sobject to bulk edit
