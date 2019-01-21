@@ -102,6 +102,23 @@ Bulk editor screen that will apply all settings to every record returned by the 
    
 That's it! You should now be able to perform bulk editing on your table component and perform custom field edits, chatter posts and task creations.
 
+##SAQL Consideration
+One consideration when modifying the SAQL code above to provide the '--bulkconfig=<configuration>' comment line is that it changes the SAQL in the dashboard JSON file to source code mode. If you don't want the SAQL converted to source code mode, then there is one other option for configuring this component. It involves making a copy of the PSBulkActionHandler VisualForce page. Follow these instructions if you need to take this approach:
+   - Go to <b>Setup > Custom Code > Visualforce Pages</b>
+   - Find the PSBulkActionHandler VisualForce page.
+     - Select 'Clone' button at the top
+     - Provide a new "Label" and "Name" value. This can be whatever you want to uniquely define your demo setup. 
+     - Change the line that says "var bulkConfig = null;" to provide a new configuration setting. It can be any of the 3 values as defined above. Examples would be:
+         var bulkConfig = 'a4xf4000000UadMAAS';
+         var bulkConfig = '00013';
+         var bulkConfig = 'Auto Customer Rank Churn';
+     - Save your new VF page. 
+     - Write down the "Name" provided as you need it for next step.
+   - Open your EA Dashboard in Studio and edit your table component to bind to this new BulkAction configuration. In configuration window on right side of screen, set following config properties:
+     - <b>Custom Action Label</b> - a string value to show as menu option for your table; example: 'Bulk Edit'
+     - <b>Visualforce Page Name</b> - set to the Name value you created earlier
+   
+
 <b>Dependency:</b> Install the [LightningStrike.io](https://github.com/thedges/Lightning-Strike) package first.
 
 <a href="https://githubsfdeploy.herokuapp.com">
