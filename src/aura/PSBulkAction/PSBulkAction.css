@@ -29,5 +29,10 @@
 }
 
 .THIS .edit-tabs {
-    background-color: #8099ae;
+    background-color: transparent;
+}
+
+
+.THIS .icon-wrap.img {
+    width:100%; max-height:90px;
 }

@@ -57,7 +57,7 @@
         <fullName>Bulk_Edit_Fields__c</fullName>
         <externalId>false</externalId>
         <label>Bulk Edit Fields</label>
-        <length>1000</length>
+        <length>5000</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -72,6 +72,16 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Header_Icon__c</fullName>
+        <externalId>false</externalId>
+        <label>Header Icon</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SAQL_ID_Field__c</fullName>
@@ -122,6 +132,26 @@
         <label>Show Task</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Tab_Background_Color__c</fullName>
+        <externalId>false</externalId>
+        <label>Tab Background Color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Title</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <label>PSBulkActionConfig</label>
     <listViews>

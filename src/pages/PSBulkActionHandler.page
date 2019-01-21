@@ -4,6 +4,8 @@
     <div id="app" />
 
     <script>
+    var bulkConfig = null;
+
     var params = {};
     '{!$CurrentPage.URL}'.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
         params[key] = value;
@@ -13,7 +15,8 @@
                    function(){
                        $Lightning.createComponent(
                            "c:PSBulkAction",
-                           {"query": params['query']},
+                           {"query": params['query'],
+                           "bulkConfig": bulkConfig},
                            "app",
                            function(cmp){
                                console.log('done');

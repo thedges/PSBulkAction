@@ -77,6 +77,11 @@ public class PSBulkActionController
 						fieldDef.placeholderName = fieldDef.referenceTo.toLowerCase();
 						fieldDef.icon = getIconName(descField.getReferenceTo()[0].getDescribe().name);
 					}
+					else if(fieldType == 'double' || fieldType == 'currency' || fieldType == 'percent')
+					{
+						fieldDef.scale = descField.getScale();
+						fieldDef.precision = descField.getPrecision();
+					}
 					fieldDefList.add(fieldDef);
 					//objectDef.addField(fieldDef);
 				}
@@ -180,11 +185,16 @@ public class PSBulkActionController
 			Show_Chatter__c, 
 			Show_Data__c, 
 			Show_SAQL__c, 
-			Show_Task__c
+			Show_Task__c,
+			Title__c,
+			Header_Icon__c,
+			Tab_Background_Color__c
 		FROM
 			PSBulkActionConfig__c
 		WHERE
-			Config_Name__c = : configName LIMIT 1];
+			Config_Name__c = :configName OR
+			Name = :configName OR
+			ID = :configName LIMIT 1];
 		return config;
         }
         catch (QueryException qe)
@@ -452,6 +462,8 @@ public class PSBulkActionController
 		public string value;
 		public string referenceTo;
 		public string placeholderName;
+		public Integer scale;
+		public Integer precision;
 		public string icon = 'standard:custom';
 		public List<OptionDef> options = null;
 		public void addOption(OptionDef opt)

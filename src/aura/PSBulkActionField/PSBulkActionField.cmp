@@ -64,20 +64,6 @@
             </div>
         </div>
     </aura:if>
-    <!-- number/double -->
-    <aura:if isTrue="{!v.fld.ftype == 'double'}">
-        <div class="slds-form-element slds-is-required slds-p-bottom_xx-small">
-            <div class="slds-form-element__control">
-                <label class="slds-form-element__label" for="{!v.fld.name + 'Search'}">{!v.fld.label + ':'}</label>
-                <div class="slds-form-element__control">
-                    <ui:inputText
-                        aura:id="{!v.fld.name + 'Search'}"
-                        class="slds-input"
-                        value="{!v.fld.value}"/>
-                </div>
-            </div>
-        </div>
-    </aura:if>
     <!-- email -->
     <aura:if isTrue="{!v.fld.ftype == 'textarea'}">
         <lightning:textarea
@@ -132,6 +118,37 @@
             name="{!v.fld.name}"
             value="{!v.fld.value}"/>
     </aura:if>
+     <!-- double -->
+     <aura:if isTrue="{!v.fld.ftype == 'double'}">
+        <lightning:input
+            aura:id="{!v.fld.name + 'Search'}"
+            type="number"
+            label="{!v.fld.label + ':'}"
+            name="{!v.fld.name}"
+            value="{!v.fld.value}"/>
+    </aura:if>   
+       <!-- currency -->
+       <aura:if isTrue="{!v.fld.ftype == 'currency'}">
+        <lightning:input
+            aura:id="{!v.fld.name + 'Search'}"
+            type="number"
+            label="{!v.fld.label + ':'}"
+            name="{!v.fld.name}"
+            value="{!v.fld.value}"
+            formatter="currency"
+            step="0.01"/>
+    </aura:if>   
+    <!-- percent -->
+    <aura:if isTrue="{!v.fld.ftype == 'percent'}">
+            <lightning:input
+                aura:id="{!v.fld.name + 'Search'}"
+                type="number"
+                label="{!v.fld.label + ':'}"
+                name="{!v.fld.name}"
+                value="{!v.fld.value}"
+                formatter="percent"
+                step="0.01"/>
+        </aura:if>   
     <!-- reference -->
     <aura:if isTrue="{!v.fld.ftype == 'reference'}">
         <c:strike_lookup

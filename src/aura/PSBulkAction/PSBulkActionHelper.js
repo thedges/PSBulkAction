@@ -4,8 +4,16 @@
 
         try
         {
-            var queryStr = component.get('v.query');
             var configName = null;
+            var queryStr = component.get('v.query');
+
+            // handle bulkConfig setting: VF page or passed in SAQL
+            if (component.get('v.bulkConfig') != null)
+            {
+                configName = component.get('v.bulkConfig');
+            }
+            else
+            {
             var lineList = queryStr.split(/\n/);
 
             for (var i = 0; i < lineList.length; i++) {
@@ -15,11 +23,12 @@
                     break;
                 }
             }
+            }
 
             console.log('configName=' + configName);
             if (configName == null || configName.length == 0)
             {
-                throw new Error('No configuration name was provided for the \'--bulkconfig=\' comment in the SAQL code.');
+                throw new Error('No configuration name was provided for the \'--bulkconfig=\' comment in the SAQL code or custom VisualForce page.');
             }
             
             component.set('v.configName', configName);
@@ -40,6 +49,7 @@
                 var state = a.getState();
                 if (state === "SUCCESS") {
                     var config = a.getReturnValue();
+                    //console.log('config=' + JSON.stringify(config));
                     component.set('v.idField', config.SAQL_ID_Field__c);
                     component.set('v.editFields', config.Bulk_Edit_Fields__c);
                     component.set('v.showBulkEdit', config.Show_Bulk_Edit__c);
@@ -47,6 +57,38 @@
                     component.set('v.showChatter', config.Show_Chatter__c);
                     component.set('v.showData', config.Show_Data__c);
                     component.set('v.showSAQL', config.Show_SAQL__c);
+
+                    if (config.Title__c != null && config.Title__c.length > 0)
+                    {
+                        component.set('v.title', config.Title__c);
+                    }
+                    else
+                    {
+                        component.set('v.title', 'Bulk Action Editor (' + component.get('v.version') + ')');
+                        
+                    }
+
+                    if (config.Header_Icon__c != null && config.Header_Icon__c.length > 0)
+                    {
+                        if (config.Header_Icon__c.startsWith('/'))
+                        {
+                            component.set('v.customHeaderIcon', true);
+                        }
+                        component.set('v.headerIcon', config.Header_Icon__c);
+                    }
+                    else
+                    {
+                        component.set('v.headerIcon', 'standard:custom');
+                    }
+
+                    if (config.Tab_Background_Color__c != null && config.Tab_Background_Color__c.length > 0)
+                    {
+                        component.set('v.tabBackgroundColor', config.Tab_Background_Color__c);
+                    }
+                    else
+                    {
+                        component.set('v.tabBackgroundColor', '#8099ae');
+                    }
 
                     self.executeSAQLQuery(component);
                 } else {
@@ -106,7 +148,8 @@
                     columns.push({'label': ' ', 'fieldName': ' ', 'type': 'text', 'initialWidth': '10'});
 
                     if (idFieldFound === false) {
-                        component.set('v.errorMsg', 'Object ID field [' + idField + '] not found in SAQL query')
+                        self.hideSpinner(component);
+                        component.set('v.errorMsg', 'Object ID field [' + idField + '] not found in SAQL query. Please validate your PSBulkActionConfig setting.');
                     } else {
 
                         // parse to create data object
@@ -144,7 +187,6 @@
                     component.set('v.queryResp', JSON.parse(a.getReturnValue()));
                 } else {
                     self.handleErrors(component, a.getError());
-                    self.hideSpinner(component);
                 }
 
             });
