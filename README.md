@@ -91,7 +91,12 @@ Bulk editor screen that will apply all settings to every record returned by the 
    - Next we need to modify the actual table component SAQL. Select the table component and click the pencil icon that pops up below it.
    - In top-right of next screen, select the SAQL edit option/button.
    - Lastly, edit the SAQL code to include a comment line that will tell the bulk editor component which configuration setting (created in step #3) to use.  Edit the table component SAQL to create a comment line as the first row. The comment line should be in the form 
-   '--bulkconfig=<configuration_name>'. An example is below,
+   '--bulkconfig=<configuration>'. The "configuration" value can be any one of following:
+     1) the record id of the PSBulkActionConfig record (ex: a4xf4000000UadMAAS)
+     2) the auto-genereated record name of the PSBulkActionConfig record (ex: 00013)
+     3) the custom name of PSBulkActionConfig record as defined in the "Config Name" field (ex: Auto Customer Rank Churn)
+   
+   An example is below,
    
    ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-SAQLEdit2.png "SAQL")
    
