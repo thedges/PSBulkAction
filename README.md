@@ -66,11 +66,20 @@ Bulk editor screen that will apply all settings to every record returned by the 
    - <b>Config Name</b> - provide a logical name for the configuration; this is the value to be used in step 4
    - <b>SAQL ID Field</b> - the field in the SAQL query that identifies the sobject IDs to for the sobject to bulk edit
    - <b>Bulk Edit Fields</b> - a comma-separated list of sobject field API names to allow editing for
+   - <b>Title</b> - the title to put at the top of the page; if left blank the default is "Bulk Action Editor (version)"
+   - <b>Header Icon</b> - the icon to put at the top-left of the header bar; the value here can be a reference to a SLDS icon as defined [here](https://www.lightningdesignsystem.com/icons/) or to a static resource file image. For example if you want to set the icon to the SLDS icon in Action sections titled "fallback, you would enter the value of "action:fallback". If you have uploaded an image as a static resource file named "AgencyLogo" then you would enter value of "/resource/AgencyLogo". If left blank the default is SLDS icon of "standard:custom"
+   - <b>Tab Background Color</b> - a background color to surrond the tab section. If left blank, the default value is "#8199ad".
    - <b>Show Bulk Edit</b> - show the Bulk Edit tab
    - <b>Show Chatter</b> - show the Chatter tab
    - <b>Show Task</b> - show the Task tab
    - <b>Show Data</b> - show the Data tab
    - <b>Show SAQL</b> - show the SAQL tab
+   
+   So if you used the following values in the Custom UI section:
+   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-CustomConfig.png "Custom Config")
+   
+   It would would look like this:
+   ![alt text](https://github.com/thedges/PSBulkAction/blob/master/PSBulkAction-Custom.png "Custom")
    
 4. For the Einstein Analytics dashboard table component that you want to add 'bulk edit' capability to, perform the following:
    - Open your dashboard in Analytics Studio
