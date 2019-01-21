@@ -102,7 +102,7 @@ Bulk editor screen that will apply all settings to every record returned by the 
    
 That's it! You should now be able to perform bulk editing on your table component and perform custom field edits, chatter posts and task creations.
 
-## SAQL Consideration
+### SAQL Consideration
 One consideration when modifying the SAQL code above to provide the '--bulkconfig=<configuration>' comment line is that it changes the SAQL in the dashboard JSON file to source code mode. If you don't want the SAQL converted to source code mode, then there is one other option for configuring this component. It involves making a copy of the PSBulkActionHandler VisualForce page. Follow these instructions if you need to take this approach:
    - Go to <b>Setup > Custom Code > Visualforce Pages</b>
    - Find the PSBulkActionHandler VisualForce page.
