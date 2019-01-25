@@ -158,7 +158,6 @@
             label="{!v.fld.label + ':'}"
             name="{!v.fld.name}"
             value="{!v.fld.value}"
-            formatter="percent"
             step="1.0"/>
     </aura:if>   
     <!-- reference -->
