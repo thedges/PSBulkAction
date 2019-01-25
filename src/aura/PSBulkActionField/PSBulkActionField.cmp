@@ -149,6 +149,18 @@
                 formatter="percent"
                 step="0.01"/>
         </aura:if>   
+
+    <!-- integer -->
+    <aura:if isTrue="{!v.fld.ftype == 'integer'}">
+        <lightning:input
+            aura:id="{!v.fld.name + 'Search'}"
+            type="number"
+            label="{!v.fld.label + ':'}"
+            name="{!v.fld.name}"
+            value="{!v.fld.value}"
+            formatter="percent"
+            step="1.0"/>
+    </aura:if>   
     <!-- reference -->
     <aura:if isTrue="{!v.fld.ftype == 'reference'}">
         <c:strike_lookup
