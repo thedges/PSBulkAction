@@ -108,10 +108,13 @@ One consideration when modifying the SAQL code above to provide the '--bulkconfi
    - Find the PSBulkActionHandler VisualForce page.
      - Select 'Clone' button at the top
      - Provide a new "Label" and "Name" value. This can be whatever you want to uniquely define your demo setup. 
-     - Change the line that says "var bulkConfig = null;" to provide a new configuration setting. It can be any of the 3 values as defined above. Examples would be:
+     - Change the line (line 7) that says "var bulkConfig = null;" to provide a new configuration setting. It can be any of the 3 values as defined above. Examples would be:
+         ```
+         // use one of the following
          var bulkConfig = 'a4xf4000000UadMAAS';
          var bulkConfig = '00013';
          var bulkConfig = 'Auto Customer Rank Churn';
+         ```
      - Save your new VF page. 
      - Write down the "Name" provided as you need it for next step.
    - Open your EA Dashboard in Studio and edit your table component to bind to this new BulkAction configuration. In configuration window on right side of screen, set following config properties:
