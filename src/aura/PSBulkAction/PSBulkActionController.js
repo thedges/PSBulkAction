@@ -1,11 +1,7 @@
 ({
     doInit: function (component, event, helper) {
-        var query = decodeURIComponent(component.get("v.query"))
-            .replace(/\+/g, ' ')
-            .replace(/; /g, ';')
-            .replace(/;/g, ';\r\n');
-        component.set("v.query", decodeURIComponent(query));
-
+        var query = decodeURIComponent(component.get("v.query"));
+        component.set("v.query", query);
         helper.loadConfig(component);
     },
     onBulkUpdate: function (component, event, helper) {

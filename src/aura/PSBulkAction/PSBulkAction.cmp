@@ -85,7 +85,7 @@
                         <span class="header-label">Object:&nbsp;</span>
                         <span class="header-value">{!v.sobjectDef.objectLabel}</span>&nbsp;&nbsp;&nbsp;
                         <span class="header-label">Record count:&nbsp;</span>
-                        <span class="header-value">{!v.data.length}</span>
+                        <span class="header-value">{!v.ids.length}</span>
                     </h2>
                 </div>
             </lightning:layoutItem>

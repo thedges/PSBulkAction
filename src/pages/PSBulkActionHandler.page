@@ -6,16 +6,25 @@
     <script>
     var bulkConfig = null;
 
+    /////////////////////////////////
+    // DO NOT EDIT BELOW THIS LINE //
+    /////////////////////////////////
+    var tmpStr = '{!$CurrentPage.URL}';
     var params = {};
-    '{!$CurrentPage.URL}'.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    tmpStr.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
         params[key] = value;
     });
+
+    var query = decodeURIComponent(params['query']);  
+
+    // replace all '+' characters with a space bot not inside quotes
+    query = query.replace(/(\+)(?=(?:[^"]|"[^"]*")*$)/gm, ' ');
 
     $Lightning.use("c:PSBulkActionApp",
                    function(){
                        $Lightning.createComponent(
                            "c:PSBulkAction",
-                           {"query": params['query'],
+                           {"query": query,
                            "bulkConfig": bulkConfig},
                            "app",
                            function(cmp){

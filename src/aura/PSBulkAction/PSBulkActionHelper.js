@@ -164,7 +164,7 @@
 
                                 if (columns[j].fieldName === idField) {
                                     var val = records[i][columns[j].fieldName];
-                                    ids.push(val);
+                                    if (!ids.includes(val)) ids.push(val);
 
                                     if (sobjectPrefixFound === false) {
                                         sobjectPrefixFound = true;
