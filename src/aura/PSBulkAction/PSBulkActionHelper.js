@@ -128,9 +128,13 @@
                     var metadata = queryResp.results.metadata[0].lineage.projections;
                     for (var i = 0; i < metadata.length; i++) {
                         var field = metadata[i].field.id;
-                        if (field.startsWith('q.')) {
-                            field = field.substring(2);
+                        
+                        var pos = field.indexOf(".");
+                        if (pos != -1)
+                        {
+                          field = field.substring(pos+1);  
                         }
+                        //console.log('field=' + field);
 
                         if (idFieldFound === false && field === idField) {
                             idFieldFound = true;
