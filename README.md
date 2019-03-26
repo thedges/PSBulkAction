@@ -1,4 +1,6 @@
 # PSBulkAction
+THIS SOFTWARE IS COVERED BY [THIS DISCLAIMER](https://raw.githubusercontent.com/thedges/Disclaimer/master/disclaimer.txt).
+
 A component providing a declarative "bulk action" editor for Einstein Analytics dashboard table components. The component receives the SAQL query from the Einstein Analytics dashboard component and provides the following:
 - Can operate on any sobject as identified by one of the columns in the SAQL (should contain record ids)
 - Ability to update every record returned by SAQL via a configurable list of fields
